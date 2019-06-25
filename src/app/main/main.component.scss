@@ -1,0 +1,87 @@
+.main{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+input.mainInput {
+    width: 52.3%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+textarea{
+    border-radius: 8px;
+    border: 1px solid; 
+    padding: 8px;
+}
+
+.mainInputArea {
+    height: 200px;
+    padding: 10px;
+}
+
+.btnArea{
+    // float: right;
+}
+
+.encryptbtn{
+    width: 100px;
+    height: 36px;
+    margin: 2px;
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #e86537;
+    background-image: linear-gradient(to bottom, #ef784e, #dd4814);
+    background-repeat: repeat-x;
+}
+.decryptbtn{
+    width: 100px;
+    height: 36px;
+    margin: 2px;
+    background-image: linear-gradient(to bottom, #555555, #222222);
+    background-repeat: repeat-x;
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #414141;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+}
+
+.mainData{
+    display: flex;
+    flex-direction: column;
+}
+
+.tableName{
+    text-align: left;
+    margin-left: 24%;
+    margin-bottom: 5px;
+}
+
+.tableArea{
+    display: flex;
+    flex-direction: row;
+    margin-left: 24%;
+    width: 52%;
+    padding: 10px;
+}
+
+.col{
+    margin: 2px;
+}
+
+.table{
+    margin-bottom: 1rem;
+    color: #212529;  
+    overflow: auto;
+    height: 100px;
+}
+
+.tableMain{
+    overflow: auto;
+    height: 300px;
+    width: 52%;
+    margin-left: 24%;
+}
+
+

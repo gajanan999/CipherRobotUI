@@ -1,0 +1,71 @@
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <div class="main">
+    <div class="mainInputArea">
+      <!-- <input type="text" class="mainInput"> -->
+      <textarea class="mainInput" rows="7" cols="135" placeholder="Type here"></textarea>
+    </div>
+    <div class="btnArea">
+      <button class="encryptbtn" value="Encrypt">Encrypt</button>
+      <button class="decryptbtn" value="Decrypt">Decrypt</button>
+    </div>
+
+    <div class="mainData">
+      <div class="tableName">Data:</div>
+    <div class="tableMain">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Encrypted Text</th>
+            <th scope="col">Key</th>
+            <th scope="col">Algorithm</th>
+            <th scope="col">User</th>
+          </tr>
+        </thead>
+        
+        <tbody class="tbody">
+            <tr *ngFor="let dataEntity of dataEntities; let i=index;">
+              <th scope="row">{{i+1}}</th>
+              <td>{{dataEntity.text}}</td>
+              <td>{{dataEntity.key}}</td>
+              <td>{{dataEntity.algorithm}}</td>
+              <td>{{dataEntity.userName}}</td>
+            </tr>
+          <!-- <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>AES</td>
+            <td>Nitin</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>DES</td>
+            <td>Santpsh</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>AES</td>
+            <td>Gajanan</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>AES</td>
+            <td>Gajanan</td>
+            </tr>              -->
+        </tbody>
+      
+      </table>
+    </div>
+  </div>
+
+</div>
