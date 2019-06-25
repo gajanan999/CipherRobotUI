@@ -34,4 +34,10 @@ export class MainComponent implements OnInit {
     });
   }
 
+
+  handleRowClick(event:Event, id:Number){
+   // console.log('Event: '+ event + ' Selected Row ' + id);
+
+  }
+
 }

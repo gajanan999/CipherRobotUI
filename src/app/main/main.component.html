@@ -27,41 +27,13 @@
         </thead>
         
         <tbody class="tbody">
-            <tr *ngFor="let dataEntity of dataEntities; let i=index;">
+            <tr *ngFor="let dataEntity of dataEntities; let i=index;" (click)="handleRowClick($event,dataEntity.id)">
               <th scope="row">{{i+1}}</th>
-              <td>{{dataEntity.text}}</td>
+              <td style="overflow: auto;">{{dataEntity.text.length>20 ? dataEntity.text.substring(0,20)+'...':dataEntity.text}}</td>
               <td>{{dataEntity.key}}</td>
               <td>{{dataEntity.algorithm}}</td>
               <td>{{dataEntity.userName}}</td>
             </tr>
-          <!-- <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>AES</td>
-            <td>Nitin</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>DES</td>
-            <td>Santpsh</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>AES</td>
-            <td>Gajanan</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>AES</td>
-            <td>Gajanan</td>
-            </tr>              -->
         </tbody>
       
       </table>

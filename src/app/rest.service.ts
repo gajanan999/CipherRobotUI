@@ -8,10 +8,12 @@ const httpOptions = {
   headers: new HttpHeaders({
     'Access-Control-Allow-Origin':'*',
     'Access-Control-Allow-Methods':  'GET,POST,PATCH,DELETE,PUT,OPTIONS',
-    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, content-type,Authorization',
-    'Content-Type':  'application/json'
+    'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, content-type, Authorization',
+    'Content-Type':  'application/json',
+    'Authorization': 'Basic ' + btoa('admin' + ':' + 'password')
   })
 };
+//const headers = new HttpHeaders().set("Access-Control-Allow-Origin", "*");
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +27,31 @@ export class RestService {
     return body || { };
   }
 
+  //  head: any ={
+  //   'Access-Control-Allow-Origin':'*',
+  //   'Access-Control-Allow-Methods':  'GET,POST,PATCH,DELETE,PUT,OPTIONS',
+  //   'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, content-type, Authorization',
+  //   'Content-Type':  'application/json',
+  //   'Authorization': 'Basic ' + btoa('admin' + ':' + 'password')
+  // }
+
   getDataEntities(): Observable<any> {
-    return this.http.get(endpoint + 'getData', httpOptions).pipe(
+
+  //   let headers = new HttpHeaders({
+  //     'Access-Control-Allow-Origin':'*',
+  //     'Access-Control-Allow-Methods':  'GET,POST,PATCH,DELETE,PUT,OPTIONS',
+  //     'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, content-type, Authorization',
+  //     'Content-Type':  'application/json',
+  //     'Authorization': 'Basic ' + btoa('admin' + ':' + 'password')});
+  // let options = { headers: headers };
+
+    return this.http.get(endpoint + 'getData', {
+      headers: new HttpHeaders({'Access-Control-Allow-Origin':'*',
+        'Access-Control-Allow-Methods':'GET,POST,PATCH,DELETE,PUT,OPTIONS',
+      'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, content-type, authorization',
+      'Content-Type':  'application/json',
+      'Authorization': 'Basic ' + btoa('admin' + ':' + 'password')+''
+    })}).pipe(
       map(this.extractData));
   }
 
