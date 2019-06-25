@@ -15,7 +15,10 @@ export class MainComponent implements OnInit {
 
   title = 'CipherRobotUI';
   dataEntities: any = [];
-  mainInput: any = ''
+  mainInput: any = '';
+  algorithms: any = ['AES','DES'];
+  algorithm: any = '';
+
 
   private dataEntitiesObservable : Observable<any[]> ; 
 
@@ -59,9 +62,37 @@ export class MainComponent implements OnInit {
 
   handleEncryptClick(event:Event){
     console.log('handleEncryptClick');
+    let response: any = {}
+    if(this.algorithm != ''){
+      var rest={
+        'text' : this.mainInput,
+        'key' : 'password',
+        'algorithm' : this.algorithm
+      }
+      this.rest.getDataEncryption(rest).subscribe((data: any) =>{
+        console.log(data);
+        response =data;
+        this.mainInput = data.text;
+      });
+      this.getDataEntities();
+
+    }
   }
 
   handleDecryptClick(event:Event){
     console.log('handleDecryptClick');
+    let response: any = {}
+    if(this.algorithm != ''){
+      var rest={
+        'text' : this.mainInput,
+        'key' : 'password',
+        'algorithm' : this.algorithm
+      }
+      this.rest.getDataDecryption(rest).subscribe((data: any) =>{
+        console.log(data);
+        response =data;
+        this.mainInput = data.decryptedText;
+      });
+    }
   }
 }

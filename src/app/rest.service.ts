@@ -31,7 +31,7 @@ export class RestService {
       map(this.extractData));
   }
 
-  getDataEncryption (encryptDecryptRequest): Observable<any> {
+  getDataEncryption (encryptDecryptRequest: any): Observable<any> {
     console.log(encryptDecryptRequest);
     return this.http.post<any>(endpoint + 'getEncyption', JSON.stringify(encryptDecryptRequest), httpOptions).pipe(
       tap((encryptDecryptResponse) => {console.log(encryptDecryptResponse)}),
@@ -39,11 +39,19 @@ export class RestService {
     );
   }
 
+  getDataDecryption (encryptDecryptRequest: any): Observable<any> {
+    console.log(encryptDecryptRequest);
+    return this.http.post<any>(endpoint + 'getDecryption', JSON.stringify(encryptDecryptRequest), httpOptions).pipe(
+      tap((encryptDecryptResponse) => {console.log(encryptDecryptResponse)}),
+      catchError(this.handleError<any>('getDataDecryption'))
+    );
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
   
       // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      console.log(error); // log to console instead
   
       // TODO: better job of transforming error for user consumption
       console.log(`${operation} failed: ${error.message}`);
