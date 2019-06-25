@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { RestService } from '../rest.service';
+import { ElementRef,  ViewChild,  Input, Output , EventEmitter } from '@angular/core';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class MainComponent implements OnInit {
 
   title = 'CipherRobotUI';
   dataEntities: any = [];
+  mainInput: any = ''
 
   private dataEntitiesObservable : Observable<any[]> ; 
 
@@ -26,6 +28,10 @@ export class MainComponent implements OnInit {
     this.getDataEntities();
   }
 
+  changeText(event:Event){
+ 
+  }
+
   getDataEntities(){
     this.dataEntities = [];
     this.rest.getDataEntities().subscribe((data:{}) =>{
@@ -36,8 +42,26 @@ export class MainComponent implements OnInit {
 
 
   handleRowClick(event:Event, id:Number){
-   // console.log('Event: '+ event + ' Selected Row ' + id);
+    console.log('Event: '+ event + ' Selected Row ' + id);
 
+    let data: any = this.dataEntities.filter( item =>{
+      return id === item.id;
+    });
+    this.mainInput = this.getTextFromDataEntities(id);
   }
 
+  getTextFromDataEntities(id:Number){
+    let data: any = this.dataEntities.filter( item =>{
+      return id === item.id;
+    });
+    return data[0]== undefined ? '': data[0].text;
+  }
+
+  handleEncryptClick(event:Event){
+    console.log('handleEncryptClick');
+  }
+
+  handleDecryptClick(event:Event){
+    console.log('handleDecryptClick');
+  }
 }

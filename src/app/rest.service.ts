@@ -13,7 +13,6 @@ const httpOptions = {
     'Authorization': 'Basic ' + btoa('admin' + ':' + 'password')
   })
 };
-//const headers = new HttpHeaders().set("Access-Control-Allow-Origin", "*");
 
 @Injectable({
   providedIn: 'root'
@@ -26,32 +25,9 @@ export class RestService {
     let body = res;
     return body || { };
   }
-
-  //  head: any ={
-  //   'Access-Control-Allow-Origin':'*',
-  //   'Access-Control-Allow-Methods':  'GET,POST,PATCH,DELETE,PUT,OPTIONS',
-  //   'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, content-type, Authorization',
-  //   'Content-Type':  'application/json',
-  //   'Authorization': 'Basic ' + btoa('admin' + ':' + 'password')
-  // }
-
   getDataEntities(): Observable<any> {
-
-  //   let headers = new HttpHeaders({
-  //     'Access-Control-Allow-Origin':'*',
-  //     'Access-Control-Allow-Methods':  'GET,POST,PATCH,DELETE,PUT,OPTIONS',
-  //     'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, content-type, Authorization',
-  //     'Content-Type':  'application/json',
-  //     'Authorization': 'Basic ' + btoa('admin' + ':' + 'password')});
-  // let options = { headers: headers };
-
-    return this.http.get(endpoint + 'getData', {
-      headers: new HttpHeaders({'Access-Control-Allow-Origin':'*',
-        'Access-Control-Allow-Methods':'GET,POST,PATCH,DELETE,PUT,OPTIONS',
-      'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token, content-type, authorization',
-      'Content-Type':  'application/json',
-      'Authorization': 'Basic ' + btoa('admin' + ':' + 'password')+''
-    })}).pipe(
+    return this.http.get(endpoint + 'getData', 
+      httpOptions).pipe(
       map(this.extractData));
   }
 

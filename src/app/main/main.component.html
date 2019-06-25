@@ -5,11 +5,11 @@
   <div class="main">
     <div class="mainInputArea">
       <!-- <input type="text" class="mainInput"> -->
-      <textarea class="mainInput" rows="7" cols="135" placeholder="Type here"></textarea>
+      <textarea id="mainInput"  [ngModel]="mainInput" (change)="changeText($event)" class="mainInput" rows="7" cols="135" placeholder="Type here"></textarea>
     </div>
     <div class="btnArea">
-      <button class="encryptbtn" value="Encrypt">Encrypt</button>
-      <button class="decryptbtn" value="Decrypt">Decrypt</button>
+      <button class="encryptbtn" value="Encrypt" (click)="handleEncryptClick($event)">Encrypt</button>
+      <button class="decryptbtn" value="Decrypt" (click)="handleDecryptClick($event)">Decrypt</button>
     </div>
 
     <div class="mainData">
