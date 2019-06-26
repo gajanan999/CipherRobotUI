@@ -1,0 +1,17 @@
+<div class="loginComp">
+    <div class="container">
+      <div class="username">
+        
+        <input type="text" placeholder="Enter Username" name="uname" [(ngModel)]="username"  required>
+      </div>
+      <div class="password">
+        <input type="password" placeholder="Enter Password" name="psw" [(ngModel)]="password"   required>
+      </div>
+      <div class="key">
+          <input type="text" placeholder="Enter Key" name="key" [(ngModel)]="key"   required>
+        </div>
+      <div class="buttons">
+        <button class="signupbtn" type="submit" (click)="createUser($event)">Signup</button>
+      </div>
+    </div>
+  </div>

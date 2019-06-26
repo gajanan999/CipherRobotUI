@@ -18,6 +18,7 @@ export class MainComponent implements OnInit {
   mainInput: any = '';
   algorithms: any = ['AES','DES'];
   algorithm: any = '';
+  errorMessage: String = '';
 
 
   private dataEntitiesObservable : Observable<any[]> ; 
@@ -62,17 +63,19 @@ export class MainComponent implements OnInit {
 
   handleEncryptClick(event:Event){
     console.log('handleEncryptClick');
+    this.errorMessage='';
     let response: any = {}
     if(this.algorithm != ''){
       var rest={
         'text' : this.mainInput,
-        'key' : 'password',
+        'key' : localStorage.getItem('key'),
         'algorithm' : this.algorithm
       }
       this.rest.getDataEncryption(rest).subscribe((data: any) =>{
         console.log(data);
         response =data;
-        this.mainInput = data.text;
+        if(null != data.id && undefined != data.id )
+            this.mainInput = data.text;
       });
       this.getDataEntities();
 
@@ -81,17 +84,23 @@ export class MainComponent implements OnInit {
 
   handleDecryptClick(event:Event){
     console.log('handleDecryptClick');
+   
+    this.errorMessage='';
     let response: any = {}
     if(this.algorithm != ''){
       var rest={
         'text' : this.mainInput,
-        'key' : 'password',
+        'key' : localStorage.getItem('key'),
         'algorithm' : this.algorithm
       }
       this.rest.getDataDecryption(rest).subscribe((data: any) =>{
         console.log(data);
         response =data;
-        this.mainInput = data.decryptedText;
+        if('SUCCESS' == data.status){
+          this.mainInput = data.decryptedText;
+        }else{
+          this.errorMessage = 'Error : '+ data.status + ' : ' + data.message;
+        }
       });
     }
   }

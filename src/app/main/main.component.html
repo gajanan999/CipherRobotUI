@@ -15,6 +15,9 @@
       <button class="encryptbtn" value="Encrypt" (click)="handleEncryptClick($event)">Encrypt</button>
       <button class="decryptbtn" value="Decrypt" (click)="handleDecryptClick($event)">Decrypt</button>
     </div>
+    <div class="error" *ngIf="errorMessage">
+      <p>{{errorMessage}}</p>
+    </div>
 
     <div class="mainData">
       <div class="tableName">Data:</div>
