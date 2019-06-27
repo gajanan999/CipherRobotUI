@@ -44,6 +44,8 @@ export class MainComponent implements OnInit {
     });
   }
 
+ 
+
 
   handleRowClick(event:Event, id:Number){
     console.log('Event: '+ event + ' Selected Row ' + id);
@@ -51,7 +53,8 @@ export class MainComponent implements OnInit {
     let data: any = this.dataEntities.filter( item =>{
       return id === item.id;
     });
-    this.mainInput = this.getTextFromDataEntities(id);
+    this.mainInput = data[0]== undefined ? '': data[0].text;
+ 
   }
 
   getTextFromDataEntities(id:Number){
@@ -74,10 +77,12 @@ export class MainComponent implements OnInit {
       this.rest.getDataEncryption(rest).subscribe((data: any) =>{
         console.log(data);
         response =data;
-        if(null != data.id && undefined != data.id )
-            this.mainInput = data.text;
+        if(null != data.id && undefined != data.id ){
+          this.mainInput = data.text;
+        }
+        this.getDataEntities();
       });
-      this.getDataEntities();
+     
 
     }
   }
@@ -101,7 +106,9 @@ export class MainComponent implements OnInit {
         }else{
           this.errorMessage = 'Error : '+ data.status + ' : ' + data.message;
         }
+        this.getDataEntities();
       });
     }
+    
   }
 }

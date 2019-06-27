@@ -5,7 +5,7 @@
   <div class="main">
     <div class="mainInputArea">
       <!-- <input type="text" class="mainInput"> -->
-      <textarea id="mainInput"  [ngModel]="mainInput" (change)="changeText($event)" class="mainInput" rows="7" cols="135" placeholder="Type here"></textarea>
+      <textarea id="mainInput"  [(ngModel)]="mainInput" (change)="changeText($event)" class="mainInput" rows="7" cols="135" placeholder="Type here"></textarea>
     </div>
     <div class="btnArea">
       <select [(ngModel)]="algorithm" id="algorithm">
