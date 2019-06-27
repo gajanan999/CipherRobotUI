@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { RestService } from '../rest.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -21,11 +22,12 @@ export class MainComponent implements OnInit {
   private dataEntitiesObservable : Observable<any[]> ; 
 
 
-  constructor(public rest:RestService) {
+  constructor(public rest:RestService,private spinner: NgxSpinnerService) {
 
    }
 
   ngOnInit() {
+    this.spinner.show();
     this.getDataEntities();
   }
 
@@ -34,11 +36,14 @@ export class MainComponent implements OnInit {
   }
 
   getDataEntities(){
+    this.spinner.show();
     this.dataEntities = [];
     this.rest.getDataEntities().subscribe((data:{}) =>{
       console.log(data);
       this.dataEntities = data;
+      this.spinner.hide();
     });
+   
   }
 
  
