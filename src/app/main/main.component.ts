@@ -45,7 +45,7 @@ export class MainComponent implements OnInit {
 
 
   handleRowClick(event:Event, id:Number){
-    console.log('Event: '+ event + ' Selected Row ' + id);
+    
 
     let data: any = this.dataEntities.filter( item =>{
       return id === item.id;
@@ -62,7 +62,7 @@ export class MainComponent implements OnInit {
   }
 
   handleEncryptClick(event:Event){
-    console.log('handleEncryptClick');
+   
     this.errorMessage='';
     let response: any = {}
     if(this.algorithm != ''){
@@ -72,7 +72,7 @@ export class MainComponent implements OnInit {
         'algorithm' : this.algorithm
       }
       this.rest.getDataEncryption(rest).subscribe((data: any) =>{
-        console.log(data);
+       
         response =data;
         if(null != data.id && undefined != data.id ){
           this.mainInput = data.text;
@@ -81,11 +81,13 @@ export class MainComponent implements OnInit {
       });
      
 
+    }else{
+      this.errorMessage='Please Select the Algorithm';
     }
   }
 
   handleDecryptClick(event:Event){
-    console.log('handleDecryptClick');
+    
    
     this.errorMessage='';
     let response: any = {}
@@ -96,7 +98,7 @@ export class MainComponent implements OnInit {
         'algorithm' : this.algorithm
       }
       this.rest.getDataDecryption(rest).subscribe((data: any) =>{
-        console.log(data);
+        
         response =data;
         if('SUCCESS' == data.status){
           this.mainInput = data.decryptedText;
@@ -105,6 +107,8 @@ export class MainComponent implements OnInit {
         }
         this.getDataEntities();
       });
+    }else{
+      this.errorMessage='Please select the Algorithm';
     }
     
   }
