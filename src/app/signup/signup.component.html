@@ -10,6 +10,11 @@
       <div class="key">
           <input type="text" placeholder="Enter Key" name="key" [(ngModel)]="key"   required>
         </div>
+      <div class="message" *ngIf="message">
+        <p>
+          {{message}}
+        </p>
+      </div>
       <div class="buttons">
         <button class="signupbtn" type="submit" (click)="createUser($event)">Signup</button>
       </div>

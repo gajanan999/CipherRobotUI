@@ -13,6 +13,7 @@ export class SignupComponent implements OnInit {
   password: any = '';
   key: any = '';
   user: any = '';
+  message : String ='';
 
   constructor(private rest:RestService, private router:Router) { }
 
@@ -20,6 +21,7 @@ export class SignupComponent implements OnInit {
   }
 
   createUser(event: Event){
+    this.message='';
     if(this.username != "" && this.password != "" && this.key !=""){
       this.rest.createUser({
         'username' : this.username,
@@ -31,6 +33,8 @@ export class SignupComponent implements OnInit {
           this.router.navigate(["login"]);
         }     
       });
+    }else{
+        this.message = "Please enter all the fields";
     }
 
   }

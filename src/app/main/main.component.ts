@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators';
 import { RestService } from '../rest.service';
-import { ElementRef,  ViewChild,  Input, Output , EventEmitter } from '@angular/core';
 
 
 @Component({
